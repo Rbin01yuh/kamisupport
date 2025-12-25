@@ -73,7 +73,7 @@ export function Pricing() {
         "Database Integration",
         "Admin Dashboard",
         "Responsive Design",
-        "3 Months Support",
+        "1 Month Support",
         "Free Training"
       ],
       highlighted: true,

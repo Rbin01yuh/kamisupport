@@ -7,28 +7,28 @@ import { useState } from "react"
 
 const testimonials = [
   {
-    name: "Rina Wijaya",
-    role: "Owner, Toko Fashion Online",
+    name: "Anton Wijaya",
+    role: "Pegawai Negeri Swasta",
     content:
-      "KAMIDUKUNG mengubah bisnis kami! Website e-commerce yang mereka buat sangat profesional dan mudah digunakan. Penjualan kami meningkat 300% dalam 3 bulan!",
+      "Kualitas code dan arsitektur sistem yang dibangun KAMIDUKUNG sangat solid. Maintenance jadi jauh lebih mudah.",
     rating: 5,
-    image: "/business-woman-avatar.png",
+    icon: "briefcase",
   },
   {
-    name: "Dedi Prasetyo",
-    role: "CEO, Tech Startup",
+    name: "Raka Pratama",
+    role: "Klien",
     content:
-      "Tim yang sangat responsif dan profesional. Aplikasi mobile kami selesai tepat waktu dengan kualitas di atas ekspektasi. Highly recommended!",
+      "Aplikasi mobile yang dibuat sangat memudahkan pelanggan kami untuk order. User experience nya luar biasa!",
     rating: 5,
-    image: "/tech-ceo-avatar.jpg",
+    icon: "smartphone",
   },
   {
-    name: "Maya Kusuma",
-    role: "Marketing Director, Enterprise Co.",
+    name: "Alia Putri",
+    role: "Klien",
     content:
-      "Sebagai perusahaan besar, kami membutuhkan partner yang dapat dipercaya. KAMIDUKUNG memberikan solusi custom yang sempurna untuk kebutuhan kami.",
+      "Tim yang sangat profesional dan responsif. Solusi yang diberikan benar-benar sesuai dengan kebutuhan bisnis kami.",
     rating: 5,
-    image: "/marketing-director-woman-avatar.jpg",
+    icon: "building",
   },
 ]
 
@@ -75,14 +75,114 @@ export function Testimonials() {
                     ))}
                   </div>
 
-                  <p className="mb-8 text-xl leading-relaxed text-gray-700">"{testimonial.content}"</p>
+                  <p className="mb-8 text-xl leading-relaxed text-gray-700">&ldquo;{testimonial.content}&rdquo;</p>
 
                   <div className="flex items-center gap-4">
-                    <img
-                      src={testimonial.image || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatType: "reverse",
+                      }}
+                      className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg"
+                    >
+                      {testimonial.icon === "briefcase" && (
+                        <motion.div
+                          animate={{ y: [0, -3, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Number.POSITIVE_INFINITY,
+                            repeatType: "reverse",
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                          </svg>
+                        </motion.div>
+                      )}
+                      {testimonial.icon === "smartphone" && (
+                        <motion.div
+                          animate={{ rotate: [0, -10, 10, 0] }}
+                          transition={{
+                            duration: 2.5,
+                            repeat: Number.POSITIVE_INFINITY,
+                            repeatType: "reverse",
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                            <path d="M12 18h.01" />
+                          </svg>
+                        </motion.div>
+                      )}
+                      {testimonial.icon === "building" && (
+                        <motion.div
+                          animate={{ scale: [1, 1.15, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Number.POSITIVE_INFINITY,
+                            repeatType: "reverse",
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                            <path d="M10 6h4" />
+                            <path d="M10 10h4" />
+                            <path d="M10 14h4" />
+                            <path d="M10 18h4" />
+                          </svg>
+                        </motion.div>
+                      )}
+                      <motion.div
+                        className="absolute inset-0 rounded-full bg-blue-400"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.5, 0, 0.5],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                          repeatType: "reverse",
+                        }}
+                      />
+                    </motion.div>
                     <div>
                       <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                       <p className="text-gray-600">{testimonial.role}</p>
