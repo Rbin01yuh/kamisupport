@@ -229,26 +229,26 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center px-4"
         >
-          <div className="inline-flex items-center gap-4 rounded-2xl bg-white px-8 py-4 shadow-lg">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 rounded-2xl bg-white px-4 sm:px-8 py-4 sm:py-4 shadow-lg max-w-full">
             <div className="flex items-center gap-2">
-              <Check size={20} className="text-green-500" />
-              <span className="text-gray-700 font-medium">
+              <Check size={20} className="text-green-500 shrink-0" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base whitespace-nowrap">
                 {language === "id" ? "Konsultasi Gratis" : "Free Consultation"}
               </span>
             </div>
-            <div className="h-6 w-px bg-gray-200"></div>
+            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
             <div className="flex items-center gap-2">
-              <Check size={20} className="text-green-500" />
-              <span className="text-gray-700 font-medium">
+              <Check size={20} className="text-green-500 shrink-0" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base whitespace-nowrap">
                 {language === "id" ? "Revisi Gratis" : "Free Revision"}
               </span>
             </div>
-            <div className="h-6 w-px bg-gray-200"></div>
+            <div className="hidden sm:block h-6 w-px bg-gray-200"></div>
             <div className="flex items-center gap-2">
-              <Check size={20} className="text-green-500" />
-              <span className="text-gray-700 font-medium">
+              <Check size={20} className="text-green-500 shrink-0" />
+              <span className="text-gray-700 font-medium text-sm sm:text-base whitespace-nowrap">
                 {language === "id" ? "Garansi 100%" : "100% Guarantee"}
               </span>
             </div>
