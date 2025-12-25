@@ -19,8 +19,16 @@ export const metadata: Metadata = {
     "Mendukung digitalisasi bisnis tanpa batas. Dari UMKM hingga Enterprise, solusi teknologi modern untuk semua.",
   generator: "v0.app",
   icons: {
-    icon: "/pictures/kamidukung.png",
-    apple: "/pictures/kamidukung.png",
+    icon: [
+      { url: "/pictures/kamidukung.png", sizes: "any" },
+      { url: "/pictures/kamidukung.png", sizes: "16x16", type: "image/png" },
+      { url: "/pictures/kamidukung.png", sizes: "32x32", type: "image/png" },
+      { url: "/pictures/kamidukung.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [
+      { url: "/pictures/kamidukung.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/pictures/kamidukung.png",
   },
 }
 

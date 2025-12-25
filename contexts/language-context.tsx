@@ -130,13 +130,22 @@ const translations = {
 
     // Contact
     "contact.badge": "Hubungi Kami",
-    "contact.title": "Mari Diskusikan Proyek Anda",
-    "contact.subtitle": "Tim kami siap membantu mewujudkan ide digital Anda",
+    "contact.title1": "Hubungi",
+    "contact.title2": "Kami",
+    "contact.subtitle": "Siap membantu mewujudkan visi digital Anda. Mari berdiskusi!",
+    "contact.info.title": "Informasi Kontak",
+    "contact.info.desc": "Jangan ragu untuk menghubungi kami. Tim kami siap membantu Anda 24/7.",
     "contact.name": "Nama Lengkap",
+    "contact.name.placeholder": "Nama Anda",
     "contact.email": "Email",
+    "contact.email.placeholder": "email@example.com",
     "contact.phone": "Nomor Telepon",
+    "contact.phone.placeholder": "+62 812-3456-7890",
     "contact.message": "Pesan",
+    "contact.message.placeholder": "Ceritakan tentang project Anda...",
     "contact.submit": "Kirim Pesan",
+    "contact.location": "Lokasi",
+    "contact.follow": "Ikuti Kami",
     "contact.office": "Kantor Kami",
     "contact.hours": "Jam Kerja",
     "contact.hours.value": "Senin - Jumat, 09:00 - 18:00",
@@ -276,13 +285,22 @@ const translations = {
 
     // Contact
     "contact.badge": "Contact Us",
-    "contact.title": "Let's Discuss Your Project",
-    "contact.subtitle": "Our team is ready to help bring your digital ideas to life",
+    "contact.title1": "Contact",
+    "contact.title2": "Us",
+    "contact.subtitle": "Ready to help bring your digital vision to life. Let's discuss!",
+    "contact.info.title": "Contact Information",
+    "contact.info.desc": "Don't hesitate to contact us. Our team is ready to help you 24/7.",
     "contact.name": "Full Name",
+    "contact.name.placeholder": "Your Name",
     "contact.email": "Email",
+    "contact.email.placeholder": "email@example.com",
     "contact.phone": "Phone Number",
+    "contact.phone.placeholder": "+62 812-3456-7890",
     "contact.message": "Message",
+    "contact.message.placeholder": "Tell us about your project...",
     "contact.submit": "Send Message",
+    "contact.location": "Location",
+    "contact.follow": "Follow Us",
     "contact.office": "Our Office",
     "contact.hours": "Business Hours",
     "contact.hours.value": "Monday - Friday, 09:00 AM - 06:00 PM",
@@ -324,7 +342,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }
 
   const t = (key: string): string => {
-    return translations[language][key] || key
+    return (translations[language] as Record<string, string>)[key] || key
   }
 
   return (
