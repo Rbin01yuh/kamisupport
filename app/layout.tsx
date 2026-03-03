@@ -14,9 +14,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "KAMIDUKUNG - Platform & Agensi Teknologi Modern",
+  title: "KAMIDUKUNG - Solusi Internet, Teknologi & Joki Skripsi/Project",
   description:
-    "Mendukung digitalisasi bisnis tanpa batas. Dari UMKM hingga Enterprise, solusi teknologi modern untuk semua.",
+    "Layanan internet RT/RW Net super cepat untuk rumah & usaha, pengembangan teknologi digital modern, hingga penyedia jasa akademik Joki Skripsi & Project terpercaya.",
   generator: "v0.app",
   icons: {
     icon: [
