@@ -7,13 +7,13 @@ import { Linkedin } from "lucide-react";
 const team = [
   {
     name: "Ridho Bintang Aulia",
-    role: "Founder | Software & AI Engineer | IaaS Sales",
+    role: "Founder",
     image: "/pictures/ridhoganteng.png",
     linkedin: "https://www.linkedin.com/in/ridhobintangaulia/"
   },
   {
     name: "Alfarizi Dwi Prasetyo",
-    role: "Founder | Software & AI Engineer",
+    role: "Co-Founder",
     image: "/pictures/tyohitam.jpg",
     linkedin: "https://www.linkedin.com/in/al-farizi-dwi-prasetyo/"
   },

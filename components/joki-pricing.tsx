@@ -29,7 +29,7 @@ export function JokiPricing() {
         "Progress consultation",
       ],
       slotsTotal: 10,
-      slotsTaken: 8,
+      slotsTaken: 10,
     },
     {
       icon: FileText,
@@ -50,12 +50,12 @@ export function JokiPricing() {
         "3-5 days delivery",
       ],
       slotsTotal: 15,
-      slotsTaken: 12,
+      slotsTaken: 15,
     },
     {
       icon: Code,
       title: language === "id" ? "Joki Project Web/App" : "Web/App Project",
-      price: "Rp1.000.000",
+      price: "Rp250.000",
       description: language === "id"
         ? "Pembuatan project website atau web application untuk tugas kuliah"
         : "Website or web application project for college assignments",
@@ -76,7 +76,7 @@ export function JokiPricing() {
     {
       icon: Smartphone,
       title: language === "id" ? "Joki Project Mobile App" : "Mobile App Project",
-      price: "Rp1.500.000",
+      price: "Rp300.000",
       description: language === "id"
         ? "Pembuatan project mobile application Android/iOS"
         : "Android/iOS mobile application project",
@@ -118,7 +118,7 @@ export function JokiPricing() {
     {
       icon: Layout,
       title: language === "id" ? "Joki UI/UX Design" : "UI/UX Design",
-      price: "Rp500.000",
+      price: "Rp200.000",
       description: language === "id"
         ? "Desain UI/UX untuk project kuliah atau portofolio"
         : "UI/UX design for college projects or portfolio",
@@ -140,6 +140,7 @@ export function JokiPricing() {
 
   const getSlotColor = (taken: number, total: number) => {
     const percentage = (taken / total) * 100
+    if (percentage >= 100) return { bg: "bg-gray-500", track: "bg-gray-100", text: "text-gray-600", badge: "bg-gray-50 border-gray-200 text-gray-700" }
     if (percentage >= 80) return { bg: "bg-red-500", track: "bg-red-100", text: "text-red-600", badge: "bg-red-50 border-red-200 text-red-700" }
     if (percentage >= 50) return { bg: "bg-amber-500", track: "bg-amber-100", text: "text-amber-600", badge: "bg-amber-50 border-amber-200 text-amber-700" }
     return { bg: "bg-emerald-500", track: "bg-emerald-100", text: "text-emerald-600", badge: "bg-emerald-50 border-emerald-200 text-emerald-700" }
@@ -205,9 +206,9 @@ export function JokiPricing() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <motion.div whileHover={{ y: -8, scale: 1.02 }} transition={{ duration: 0.3 }}>
-                  <Card className="group relative h-full overflow-hidden rounded-2xl border-0 bg-white p-6 shadow-lg transition-all hover:shadow-2xl">
+                  <Card className={`group relative h-full overflow-hidden rounded-2xl border-0 bg-white p-6 shadow-lg transition-all hover:shadow-2xl ${slotsRemaining === 0 ? "opacity-90 saturate-50" : ""}`}>
                     {/* Limited Seats Badge */}
-                    {slotsRemaining <= 3 && (
+                    {slotsRemaining <= 3 && slotsRemaining > 0 && (
                       <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -224,17 +225,31 @@ export function JokiPricing() {
                       </motion.div>
                     )}
 
+                    {slotsRemaining === 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="absolute top-3 right-3"
+                      >
+                        <motion.div
+                          className="flex items-center gap-1.5 rounded-full bg-gray-500 px-3 py-1 text-xs font-bold text-white shadow-lg shadow-gray-500/30"
+                        >
+                          {language === "id" ? "Penuh!" : "Full!"}
+                        </motion.div>
+                      </motion.div>
+                    )}
+
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
                         whileHover={{ rotate: 360, scale: 1.1 }}
                         transition={{ duration: 0.6 }}
-                        className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg"
+                        className={`inline-flex h-14 w-14 items-center justify-center rounded-xl text-white shadow-lg ${slotsRemaining === 0 ? "bg-gray-400" : "bg-gradient-to-br from-blue-500 to-blue-700"}`}
                       >
                         <service.icon size={28} />
                       </motion.div>
                       <div className="text-right">
                         <span className="text-xs text-gray-500 block">{t("joki.startFrom")}</span>
-                        <span className="text-xl font-bold text-blue-600">{service.price}</span>
+                        <span className={`text-xl font-bold ${slotsRemaining === 0 ? "text-gray-500" : "text-blue-600"}`}>{service.price}</span>
                       </div>
                     </div>
                     
@@ -247,9 +262,11 @@ export function JokiPricing() {
                         <div className="flex items-center gap-1.5">
                           <Users size={14} />
                           <span className="text-xs font-semibold">
-                            {language === "id" 
-                              ? `Sisa ${slotsRemaining} slot bulan ini` 
-                              : `${slotsRemaining} slots left this month`}
+                            {slotsRemaining === 0 
+                              ? (language === "id" ? "Kuota Habis" : "Fully Booked")
+                              : (language === "id" 
+                                ? `Sisa ${slotsRemaining} slot bulan ini` 
+                                : `${slotsRemaining} slots left this month`)}
                           </span>
                         </div>
                         <span className="text-xs font-bold">
@@ -270,29 +287,36 @@ export function JokiPricing() {
                     <ul className="mb-6 space-y-2">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-2 text-sm text-gray-600">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                          <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${slotsRemaining === 0 ? "bg-gray-400" : "bg-blue-500"}`} />
                           {feature}
                         </li>
                       ))}
                     </ul>
 
                     <Button
-                      asChild
+                      asChild={slotsRemaining > 0}
+                      disabled={slotsRemaining === 0}
                       className={`w-full text-white hover:shadow-lg ${
-                        slotsRemaining <= 3
-                          ? "bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
-                          : "bg-gradient-to-r from-blue-600 to-blue-700"
+                        slotsRemaining === 0
+                          ? "bg-gray-400 cursor-not-allowed opacity-100" // prevent button opacity from compounding disabled state
+                          : slotsRemaining <= 3
+                            ? "bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
+                            : "bg-gradient-to-r from-blue-600 to-blue-700"
                       }`}
                       size="default"
                     >
-                      <a href={`https://wa.me/6281536164746?text=${encodeURIComponent(`Halo KAMIDUKUNG! Saya tertarik dengan layanan ${service.title}`)}`} target="_blank" rel="noopener noreferrer">
-                        {slotsRemaining <= 3
-                          ? (language === "id" ? "🔥 Ambil Slot Sekarang!" : "🔥 Grab Your Slot!")
-                          : t("joki.cta")}
-                      </a>
+                      {slotsRemaining > 0 ? (
+                        <a href={`https://wa.me/6281536164746?text=${encodeURIComponent(`Halo KAMIDUKUNG! Saya tertarik dengan layanan ${service.title}`)}`} target="_blank" rel="noopener noreferrer">
+                          {slotsRemaining <= 3
+                            ? (language === "id" ? "🔥 Ambil Slot Sekarang!" : "🔥 Grab Your Slot!")
+                            : t("joki.cta")}
+                        </a>
+                      ) : (
+                        <span>{language === "id" ? "Kuota Penuh" : "Fully Booked"}</span>
+                      )}
                     </Button>
 
-                    <div className="absolute -bottom-2 -right-2 h-24 w-24 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 opacity-0 blur-2xl transition-opacity group-hover:opacity-20" />
+                    <div className={`absolute -bottom-2 -right-2 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity group-hover:opacity-20 ${slotsRemaining === 0 ? "bg-gray-400" : "bg-gradient-to-br from-blue-400 to-blue-600"}`} />
                   </Card>
                 </motion.div>
               </motion.div>

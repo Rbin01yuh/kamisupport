@@ -70,7 +70,7 @@ export function Contact() {
                 {[
                   { icon: Mail, text: "ridhobintangaulia5@gmail.com", label: t("contact.email") },
                   { icon: Phone, text: "+62 815-3616-4746", label: t("contact.phone") },
-                  { icon: MapPin, text: "Medan & Cirebon, Indonesia", label: t("contact.location") },
+                  { icon: MapPin, text: "Deli Serdang, North Sumatra", label: t("contact.location") },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
