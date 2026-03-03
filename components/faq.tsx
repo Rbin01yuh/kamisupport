@@ -2,41 +2,15 @@
 
 import { motion } from "framer-motion"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-
-const faqs = [
-  {
-    question: "Berapa lama waktu pengerjaan project?",
-    answer:
-      "Waktu pengerjaan tergantung kompleksitas project. Untuk website company profile sekitar 2-4 minggu, aplikasi web/mobile 2-3 bulan, dan project enterprise custom bisa 3-6 bulan. Kami selalu memberikan timeline yang jelas di awal project.",
-  },
-  {
-    question: "Apakah ada biaya maintenance?",
-    answer:
-      "Setiap paket sudah termasuk maintenance gratis sesuai durasi yang tertera (3-12 bulan). Setelah periode tersebut, Anda bisa melanjutkan dengan paket maintenance tahunan atau per-insiden sesuai kebutuhan.",
-  },
-  {
-    question: "Teknologi apa yang digunakan?",
-    answer:
-      "Kami menggunakan teknologi modern dan terkini seperti Next.js, React, Node.js, Python, dan berbagai framework lainnya. Pemilihan teknologi disesuaikan dengan kebutuhan dan skala project Anda.",
-  },
-  {
-    question: "Apakah bisa custom sesuai kebutuhan?",
-    answer:
-      "Tentu saja! Semua paket kami dapat disesuaikan dengan kebutuhan spesifik bisnis Anda. Kami akan melakukan konsultasi mendalam untuk memahami requirements Anda sebelum memulai development.",
-  },
-  {
-    question: "Bagaimana proses pembayaran?",
-    answer:
-      "Pembayaran dilakukan secara bertahap: 30% down payment, 40% saat development selesai 50%, dan 30% sisanya saat project selesai dan siap launch. Kami juga menerima berbagai metode pembayaran.",
-  },
-  {
-    question: "Apakah ada garansi?",
-    answer:
-      "Ya, kami memberikan garansi bug-free selama masa maintenance. Jika terdapat bug atau error yang bukan disebabkan oleh modifikasi dari pihak klien, kami akan memperbaikinya tanpa biaya tambahan.",
-  },
-]
+import { useLanguage } from "@/contexts/language-context"
 
 export function FAQ() {
+  const { t } = useLanguage()
+
+  const faqKeys = [
+    "faq.q1", "faq.q2", "faq.q3", "faq.q4", "faq.q5", "faq.q6", "faq.q7", "faq.q8"
+  ]
+
   return (
     <section id="faq" className="bg-gradient-to-br from-blue-50 to-white py-20 lg:py-32">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -47,14 +21,14 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+            {t("faq.badge")}
+          </div>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl mb-4">
-            Pertanyaan{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              yang Sering Ditanyakan
-            </span>
+            {t("faq.title")}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Temukan jawaban untuk pertanyaan umum tentang layanan kami
+            {t("faq.subtitle")}
           </p>
         </motion.div>
 
@@ -65,9 +39,9 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
         >
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {faqKeys.map((key, index) => (
               <motion.div
-                key={index}
+                key={key}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -75,9 +49,9 @@ export function FAQ() {
               >
                 <AccordionItem value={`item-${index}`} className="rounded-2xl border-0 bg-white px-6 shadow-lg">
                   <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 hover:text-blue-600 hover:no-underline">
-                    {faq.question}
+                    {t(`${key}.question`)}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 leading-relaxed">{faq.answer}</AccordionContent>
+                  <AccordionContent className="text-gray-600 leading-relaxed">{t(`${key}.answer`)}</AccordionContent>
                 </AccordionItem>
               </motion.div>
             ))}

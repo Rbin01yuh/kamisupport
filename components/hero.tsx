@@ -110,7 +110,7 @@ export function Hero() {
           >
             <span>{t("hero.trusted")}</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              {["UMKM", "Startup", "Enterprise"].map((text) => (
+              {["Rumah Tangga", "UMKM", "Startup", "Enterprise"].map((text) => (
                 <span key={text} className="font-semibold text-gray-700">
                   {text}
                 </span>

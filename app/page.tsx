@@ -3,6 +3,8 @@ import { Services } from "@/components/services"
 import { About } from "@/components/about"
 import { WhyUs } from "@/components/why-us"
 import { Pricing } from "@/components/pricing"
+import { InternetPricing } from "@/components/internet-pricing"
+import { JokiPricing } from "@/components/joki-pricing"
 import { Team } from "@/components/team"
 import { Testimonials } from "@/components/testimonials"
 import { Partnership } from "@/components/partnership"
@@ -25,6 +27,8 @@ export default function Page() {
         <About />
         <WhyUs />
         <Pricing />
+        <InternetPricing />
+        <JokiPricing />
         <Team />
         <Testimonials />
         <Partnership />

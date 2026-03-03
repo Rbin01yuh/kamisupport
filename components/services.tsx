@@ -2,13 +2,25 @@
 
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
-import { Globe, Smartphone, Brain, Cloud, Palette, Link } from "lucide-react"
+import { Globe, Smartphone, Brain, Cloud, Palette, Link, Wifi, FileText } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export function Services() {
   const { t } = useLanguage()
 
   const services = [
+    {
+      icon: Wifi,
+      title: t("services.internet.title"),
+      description: t("services.internet.desc"),
+      featured: true,
+    },
+    {
+      icon: FileText,
+      title: t("services.joki.title"),
+      description: t("services.joki.desc"),
+      featured: true,
+    },
     {
       icon: Globe,
       title: t("services.web.title"),
